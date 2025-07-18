@@ -13,7 +13,7 @@ const postSchema = new mongoose.Schema({
   hashtags: { type: String },
   likesCount: { type: Number, default: 0 },
   likedBy: { type: [String], default: [] }, // Array of usernames
-  timeAgo: { type: String }, // This can be derived on frontend or updated periodically
+  timeAgo: { type: String }, 
   createdAt: { type: Date, default: Date.now },
 })
 

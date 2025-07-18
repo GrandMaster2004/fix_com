@@ -1,8 +1,6 @@
 const Post = require("../models/Post")
 
-// @desc    Get all posts (public feed)
-// @route   GET /api/posts
-// @access  Public
+
 exports.getPosts = async (req, res) => {
   try {
     const posts = await Post.find().sort({ createdAt: -1 })
@@ -12,13 +10,11 @@ exports.getPosts = async (req, res) => {
   }
 }
 
-// @desc    Create a new post for the authenticated user
-// @route   POST /api/posts
-// @access  Private
+
 exports.createPost = async (req, res) => {
   const { username, storeName, imageUrl, caption, hashtags, likesCount, likedBy, timeAgo } = req.body
   const newPost = new Post({
-    userId: req.user, // Assign the authenticated user's ID from middleware
+    userId: req.user, 
     username,
     storeName,
     imageUrl,

@@ -1,8 +1,6 @@
 const List = require("../models/List")
 
-// @desc    Get all lists for the authenticated user
-// @route   GET /api/lists
-// @access  Private
+
 exports.getLists = async (req, res) => {
   try {
     const lists = await List.find({ userId: req.user }).sort({ createdAt: -1 })
@@ -12,13 +10,11 @@ exports.getLists = async (req, res) => {
   }
 }
 
-// @desc    Create a new list for the authenticated user
-// @route   POST /api/lists
-// @access  Private
+
 exports.createList = async (req, res) => {
   const { name, itemsCount, progress, imageUrl, color } = req.body
   const newList = new List({
-    userId: req.user, // Assign the authenticated user's ID from middleware
+    userId: req.user, 
     name,
     itemsCount,
     progress,

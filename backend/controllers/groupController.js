@@ -1,8 +1,6 @@
 const Group = require("../models/Group")
 
-// @desc    Get all groups for the authenticated user
-// @route   GET /api/groups
-// @access  Private
+
 exports.getGroups = async (req, res) => {
   try {
     const groups = await Group.find({ userId: req.user }).sort({ createdAt: -1 })
@@ -12,9 +10,7 @@ exports.getGroups = async (req, res) => {
   }
 }
 
-// @desc    Create a new group for the authenticated user
-// @route   POST /api/groups
-// @access  Private
+
 exports.createGroup = async (req, res) => {
   const { name, iconUrl, eventDate, eventTime, itemsCount, takenCount, cancelledCount, participants } = req.body
   const newGroup = new Group({
